@@ -19,7 +19,7 @@ const Navbar = () => {
     { label: 'Home', path: '/' },
     { label: 'Movies', path: '/movies' },
     { label: 'Theaters', path: '/' },
-    { label: 'Favorites', path: '/favorites' },
+    { label: 'Favorites', path: '/favorite' },
   ];
 
   return (
