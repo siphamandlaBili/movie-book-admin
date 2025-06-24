@@ -11,9 +11,14 @@
   font-family:"Outfit", sans-serif;
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) transparent;
+  scroll-behavior: smooth;
 }
 
 body{
   color: #F5F5F5;
   background-color: #1E1E2F;
+}
+
+.no-scrollbar{
+  scrollbar-width: none;
 }
