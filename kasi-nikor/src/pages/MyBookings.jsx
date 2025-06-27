@@ -19,7 +19,7 @@ const currency = import.meta.env.VITE_CURRENCY;
   },[])
 
   return !loading? (
-    <div className='relative px-6 md:px-16 lg:px-40 pt-30 md:pt-40 pt-30 md:pt-40 min-h-[80vh]'>
+    <div className='relative px-6 md:px-16 lg:px-40  pt-30 md:pt-40 min-h-[80vh]'>
       <BlurCircle top='100px' left='100px'/>
       <div>
         <BlurCircle bottom='0px' left='600px'/>
@@ -48,10 +48,10 @@ const currency = import.meta.env.VITE_CURRENCY;
 </p>
             </div>
           </div>
-<div className='flex flex-col md:items-end mdKtext-right justify-between p-4'>
+<div className='flex flex-col md:items-end md:text-right justify-between p-4'>
     <div className='flex items-center gap-4'>
       <p className='text-2xl font-semibold mb-3'>{currency}{item.amount}</p>
-      {!item.isPaid && <button className='bg-primary px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer text-white px-4 py-2 rounded-lg'>Pay Now</button>}
+      {!item.isPaid && <button className='bg-primary px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer text-white'>Pay Now</button>}
     </div>
 
     <div className='text-sm'>

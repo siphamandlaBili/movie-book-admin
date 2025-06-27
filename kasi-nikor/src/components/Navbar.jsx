@@ -18,7 +18,6 @@ const Navbar = () => {
   const navLinks = [
     { label: 'Home', path: '/' },
     { label: 'Movies', path: '/movies' },
-    { label: 'Theaters', path: '/' },
     { label: 'Favorites', path: '/favorite' },
   ];
 

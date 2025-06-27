@@ -12,6 +12,7 @@ const SeatLayout = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [selectedTime, setSelectedTime] = useState(null);
   const [show, setShow] = useState(null);
+  const currency = import.meta.env.VITE_CURRENCY;
 
   const navigate = useNavigate();
 
@@ -118,7 +119,7 @@ const SeatLayout = () => {
               ))}
             </div>
             <p className="mt-4 font-medium">
-              Total: <span className="text-lg">${selectedSeats.length * 12}</span>
+              Total: <span className="text-lg">{currency}{selectedSeats.length * 12}</span>
             </p>
             <div className="group">
               <button 
