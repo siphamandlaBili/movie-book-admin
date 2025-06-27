@@ -40,7 +40,7 @@ const SeatLayout = () => {
       toast.error("Please select at least one seat");
       return;
     }
-    navigate('/checkout');
+    navigate('/my-bookings');
   }
 
   const renderSeats = (row, count = 9) => (
