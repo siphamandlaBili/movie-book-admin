@@ -6,23 +6,22 @@ export const inngest = new Inngest({ id: "movie-ticketing-app" });
 
 //inngest function to save clerk user data to mongodb
 const syncUserCreation = inngest.createFunction(
-  { id: 'sync-user-from-clerk' },
-  { event: "clerk/user.created" },
-  async (event) => {
-    // Access user data from event.data.data
-    const { id, first_name, last_name, email_addresses, image_url } = event.data.data;
+    {id:'sync-user-from-clerk'},
+    {event:"clerk/user.created"},
 
-    const userData = {
-      _id: id,
-      name: `${first_name} ${last_name}`,
-      email: email_addresses[0]?.email_address,
-      image: image_url
-    };
-    
-    console.log(userData);
-    await User.create(userData);
-  }
-);
+    async (event)=>{
+      const {id,first_name,last_name,email_addresses,image_url} = event.data;
+
+      const userData = {
+        _id:id,
+        name:`${first_name} ${last_name}`,
+        email:email_addresses[0]?.email_address,
+        image:image_url
+      }
+
+      await User.create(userData);
+    }
+)
 
 //inngest function to delete user from database
 const syncUserDeletion = inngest.createFunction(
@@ -30,7 +29,7 @@ const syncUserDeletion = inngest.createFunction(
     {event:"clerk/user.deleted"},
 
     async (event)=>{
-      const {id} = event.data.data;
+      const {id} = event.data;
 
       await User.findByIdAndDelete(id);
     }
@@ -41,7 +40,7 @@ const syncUserUpdate = inngest.createFunction(
     {event:"clerk/user.updated"},
 
     async (event)=>{
-     const {id,first_name,last_name,email_addresses,image_url} = event.data.data;
+     const {id,first_name,last_name,email_addresses,image_url} = event.data;
      
      const userData = {
         _id:id,
