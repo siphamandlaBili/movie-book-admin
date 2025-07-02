@@ -10,10 +10,10 @@ const syncUserCreation = inngest.createFunction(
     {event:"clerk/user.created"},
 
     async (event)=>{
-      const {id,first_name,last_name,email_addresses,image_url} = event.data;
+      const {first_name,last_name,email_addresses,image_url} = event.data;
 
       const userData = {
-        _id:id,
+        _id:1,
         name:`${first_name} ${last_name}`,
         email:email_addresses[0]?.email_address,
         image:image_url
