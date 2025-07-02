@@ -10,6 +10,9 @@ const server = express();
 const port = 3000;
 const mongoUri = process.env.MONGO_URI;
 
+server.get('/',(req,res)=>{
+  res.send('backend is live')
+})
 // middleware
 server.use(express.json());
 server.use(cors());
@@ -23,7 +26,7 @@ const startServer = async () => {
         await dbConnect(mongoUri);
         server.listen(port, () => {
             console.log(`now listening to pot ${port}`)
-        })
+        }) 
     } catch (error) {
         console.log(error.message);
     }
