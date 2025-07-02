@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 
-@theme {
+@theme{
   --color-primary: #6045F8;        
   --color-primary-dull: #4B36C9;   
 }

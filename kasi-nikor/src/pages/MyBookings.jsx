@@ -21,10 +21,7 @@ const currency = import.meta.env.VITE_CURRENCY;
   return !loading? (
     <div className='relative px-6 md:px-16 lg:px-40  pt-30 md:pt-40 min-h-[80vh]'>
       <BlurCircle top='100px' left='100px'/>
-      <div>
-        <BlurCircle bottom='0px' left='600px'/>
-      </div>
-
+      
       <h1 className='text-lg font-semibold mb-4'>My Bookings</h1>
 
       {bookings.map((item,index)=>{
@@ -54,10 +51,14 @@ const currency = import.meta.env.VITE_CURRENCY;
       {!item.isPaid && <button className='bg-primary px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer text-white'>Pay Now</button>}
     </div>
 
-    <div className='text-sm'>
-      <p className='text-end'><span className='text-gray-400'>Total Tickets</span> {item?.bookedSeats.length}</p>
-      <p><span className='text-gray-400'>Seats Booked</span> {item?.bookedSeats.join(", ")}</p>
-    </div>
+    <div className='flex flex-col sm:flex-row items-center justify-between gap-2 text-sm'>
+  <p className='text-center sm:text-left'>
+    <span className='text-gray-400'>Seats Booked</span> {item?.bookedSeats.join(", ")}
+  </p>
+  <p className='text-center sm:text-right'>
+    <span className='text-gray-400'>Total Tickets</span> {item?.bookedSeats.length}
+  </p>
+</div>
 </div>
 
         </div>

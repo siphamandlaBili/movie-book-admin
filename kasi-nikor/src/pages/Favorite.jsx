@@ -1,32 +1,63 @@
-import React from 'react'
-import { dummyShowsData } from '../assets/assets.js';
+import React from 'react';
+import { dummyShowsData } from '../assets/assets';
 import MovieCard from '../components/MovieCard';
+import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Favorite = () => {
-  console.log(dummyShowsData);
-  return (
-   <div className="min-h-screen bg-gradient-to-b p-30 from-gray-900 to-black text-white">
-      {dummyShowsData.length > 0 ? (
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-sm md:text-xl font-bold mb-8">Favorite Movies</h1>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {dummyShowsData.map((movie) => (
-              <MovieCard 
-                movie={movie} 
-                key={movie._id}
-                className="transition-transform duration-300 hover:scale-105"
-              />
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="flex items-center justify-center h-screen">
-          <h1 className="text-2xl font-bold text-gray-500">No Movies Available</h1>
-        </div>
-      )}
-    </div>
-  )
-}
+  const navigate = useNavigate();
 
-export default Favorite
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-20 px-4 md:px-8 lg:px-16">
+      <div className="max-w-7xl mx-auto">
+        {/* Header section */}
+        <div className="relative flex items-center justify-between pb-8">
+          <h1 className="text-lg md:text-xl font-bold">Favorite Movies</h1>
+        </div>
+
+        {/* Movie grid */}
+        {dummyShowsData.length > 0 ? (
+          <>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+              {dummyShowsData.map((movie) => (
+                <div 
+                  key={movie._id}
+                  className="w-full max-w-[260px] sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1.5rem)] lg:w-[calc(25%-1.5rem)]"
+                >
+                  <MovieCard movie={movie} />
+                </div>
+              ))}
+            </div>
+
+            {/* Show More button */}
+            <div className="flex justify-center mt-16">
+              <button 
+                onClick={() => window.scrollTo(0,0)} 
+                className="px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-md font-medium cursor-pointer"
+              >
+                Show more
+              </button>
+            </div>
+          </>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-20">
+            <div className="bg-gray-800 p-8 rounded-xl max-w-md text-center">
+              <h2 className="text-2xl font-bold mb-4">No Favorite Movies Yet</h2>
+              <p className="text-gray-400 mb-6">
+                You haven't added any movies to your favorites. Explore our collection and add some!
+              </p>
+              <button
+                onClick={() => navigate('/movies')}
+                className="px-6 py-3 bg-primary hover:bg-primary-dull transition rounded-md font-medium"
+              >
+                Browse Movies
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Favorite;
