@@ -5,6 +5,7 @@ import dbConnect from "./dbConnection/db.js";
 import { clerkMiddleware,clerkClient, requireAuth, getAuth } from '@clerk/express'
 import { serve } from "inngest/express";
 import { inngest, functions } from "./inngest/index.js"
+import showRouter from "./routes/showRoutes.js";
 
 const server = express();
 const port = 3000;
@@ -20,6 +21,7 @@ server.use(clerkMiddleware())
 
 // Set up the "/api/inngest" (recommended) routes with the serve handler
 server.use("/api/inngest", serve({ client: inngest, functions }));
+server.use("/api/show",showRouter)
 
 const startServer = async () => {
     try {
